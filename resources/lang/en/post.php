@@ -13,8 +13,11 @@ return [
     |
     */
 
-    'success_create' => 'The record has been created',
-    'success_update' => 'The record has been updated',
-    'success_destroy' => 'The record has been destroyed',
+    'success_create' => 'El Post ha sido creado',
+    'success_update' => 'El Post ha sido actualizado',
+    'success_destroy' => 'El Post ha sido eliminado',
+
+    'mail_create' => 'Un Post ha sido creado',
+    'mail_update' => 'Un Post ha sido actualizado'
 
 ];

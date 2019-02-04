@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\PostCreated;
+use App\Mail\PostUpdated;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\Post\PostCreateRequest;
 use App\Http\Requests\Post\PostDeletedRequest;
 use App\Http\Requests\Post\PostIdRequest;
@@ -44,6 +47,7 @@ class PostController extends Controller
 
         \DB::commit();
         Session::flash('success', trans('post.success_create'));
+        Mail::to(env('MAIL_RECEIVER'))->send(new PostCreated());
         return redirect()->route('posts.list');
     }
 
@@ -65,6 +69,7 @@ class PostController extends Controller
 
         \DB::commit();
         Session::flash('success', trans('post.success_update'));
+        Mail::to(env('MAIL_RECEIVER'))->send(new PostUpdated($data));
         return redirect()->route('posts.list');
     }
 
